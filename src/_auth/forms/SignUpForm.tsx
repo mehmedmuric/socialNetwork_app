@@ -8,6 +8,7 @@ import {Input} from "@/components/ui/input"
 import {SignUpValidation} from "../../lib/validation/index"
 import { z } from 'zod'
 import Loader from '@/components/shared/Loader'
+import { createUserAccount } from '@/lib/appwrite/api'
 
 
 
@@ -23,8 +24,8 @@ const SignUpForm = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const newUser = await createUserAccount(values);
   }
 
 
